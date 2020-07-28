@@ -15,11 +15,11 @@ function generatePassword() {
   var confirmLength = (prompt("How many characters would you like your password to contain?"));
   
   while(confirmLength <= 7 || confirmLength >= 129) {
-      alert("Password length must be between 8-128 characters. Try again!");
-      var confirmLength = (prompt("How Many characters would you like your password to contain?"));
+    alert("Password length must be between 8-128 characters. Try again!");
+    var confirmLength = (prompt("How Many characters would you like your password to contain?"));
   }
 
-      alert (`Your password will have ${confirmLength} characters`);
+    alert (`Your password will have ${confirmLength} characters`);
 
     var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
     var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
@@ -27,11 +27,11 @@ function generatePassword() {
     var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
 
   while(confirmLowerCase === false && confirmUpperCase === false && confirmNumericCharacter === false && confirmSpecialCharacter === false) {
-      alert("You must choose at least one parameter");
-      var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-      var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
-      var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
-      var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+    alert("You must choose at least one parameter");
+    var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+    var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+    var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
+    var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
   }
 
     var passwordCharacters = []
@@ -54,7 +54,6 @@ function generatePassword() {
 
       console.log(passwordCharacters)
 
-      // Empty string to be filled based on for loop selecting random characters from the array
       var randomPassword = ""
       
       for (var i = 0; i < confirmLength; i++) {
@@ -69,4 +68,15 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
+
+var copy = document.querySelector("#copy");
+copy.addEventListener("click", function () {
+    copyPassword();
+});
+
+function copyPassword() {
+    document.getElementById("password").select();
+    document.execCommand("Copy");
+    alert("Password copied to clipboard.");
 }
